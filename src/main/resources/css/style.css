@@ -1,0 +1,19 @@
+/* CSS styling for CV Builder application */
+
+body {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f4f4f4;
+}
+
+.label {
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
