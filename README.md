@@ -63,7 +63,3 @@ This is a CV Builder project that allows users to create, customize, and preview
 ![Java](https://img.shields.io/badge/Java-21-blue)
 ![JavaFX](https://img.shields.io/badge/JavaFX-21-green)
 ![Maven](https://img.shields.io/badge/Maven-3.8.1-red)
-
----
-
-Feel free to contribute to this project by forking the repository and submitting a pull request!
