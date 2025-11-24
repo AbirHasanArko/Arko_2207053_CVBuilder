@@ -77,7 +77,7 @@ public class DatabaseManager {
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """;
 
-        try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, cvData.getName());
             pstmt.setString(2, cvData.getEmail());
             pstmt.setString(3, cvData.getPhone());
@@ -90,9 +90,11 @@ public class DatabaseManager {
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
-                try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        int id = generatedKeys.getInt(1);
+                // Use SQLite's last_insert_rowid() function to get the generated ID
+                try (Statement stmt = connection.createStatement();
+                     ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")) {
+                    if (rs.next()) {
+                        int id = rs.getInt(1);
                         System.out.println("CV added successfully with ID: " + id);
                         return id;
                     }
